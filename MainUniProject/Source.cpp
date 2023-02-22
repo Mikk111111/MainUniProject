@@ -109,10 +109,15 @@ student addStudent()//TODO
 	std::cout <<std::endl<< "Enter Student Surname: ";
 	std::cin >> temp.studSurname;
 	std::cout << std::endl << "Enter Student Final Mark: ";
-	std::cin >> temp.finalMark;
+	try
+	{
+		std::cin >> temp.finalMark;
+	}catch (std::exception e)
+	{
+		std::cout << "Try again" << std::endl;
+	}
 	std::cout << std::endl << "Enter Student Mark Amount: ";
 	std::cin >> amount;
-	std::cout << std::endl;
 
 	while(isAdding&&amount>0)
 	{
@@ -120,7 +125,6 @@ student addStudent()//TODO
 		{
 			place++;
 			std::cout << "Enter "<<place<<" Mark:";
-			//std::cin >> temp3.push_back;
 			std::cin >> tempo;
 			tempArr.push_back(tempo);
 			amount--;
@@ -169,20 +173,22 @@ void printWithMed(student stud)//DONE
 
 student randFillStudents(int studPosition)
 {
+	std::random_device dev;
+	std::mt19937 rng(dev());
+	std::uniform_int_distribution<std::mt19937::result_type> dist10(0, 10); // distribution in range
+	std::uniform_int_distribution<std::mt19937::result_type> dist110(1, 10); // distribution in range
+
 	student temp;
 	std::vector<int> tempArr;
-
-	std::string name = "Vardenis";
-	std::string surnname = "Pavardenis";
-
-	for(int i = 0;i> rand() % 10 + 1;i++)
+	for(int i = 0;i< dist110(rng);i++)
 	{
-		tempArr.push_back(rand() % 10 + 1);
+		int tempmark = dist10(rng);
+		tempArr.push_back(tempmark);
 	}
 
-	temp.studName = name+std::to_string(studPosition);
-	temp.studSurname = surnname + std::to_string(studPosition);
-	temp.finalMark = rand() % 10 + 1;
+	temp.studName = "Vardenis" +std::to_string(studPosition);
+	temp.studSurname = "Pavardenis" + std::to_string(studPosition);
+	temp.finalMark = dist10(rng);
 	temp.marks = tempArr;
 
 	return temp;
