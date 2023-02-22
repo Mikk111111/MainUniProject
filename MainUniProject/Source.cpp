@@ -1,5 +1,3 @@
-
-
 #include "MyHeader.h"
 
 struct student//DONE
@@ -13,6 +11,7 @@ struct student//DONE
 student addStudent();
 void printWithMed(student stud);//DONE
 void printWithAvg(student stud);//DONE
+student randFillStudents(int studPosition);
 
 void menu(std::vector<student> studentBody)//TODO
 {
@@ -24,7 +23,8 @@ void menu(std::vector<student> studentBody)//TODO
 		std::cout << "1. Print Student List with Median" << std::endl;
 		std::cout << "2. Print Student List with Average" << std::endl;
 		std::cout << "3. Add Student" << std::endl;
-		std::cout << "4. End Work" << std::endl;
+		std::cout << "4. Create random students" << std::endl;
+		std::cout << "5. End Work" << std::endl;
 		try
 		{
 			std::cin >> command;
@@ -53,7 +53,21 @@ void menu(std::vector<student> studentBody)//TODO
 			case 3://add stud
 				studentBody.push_back(addStudent());
 				break;
-			case 4:
+		case 4:
+			int amount;
+			std::cout << "Generate how many?:";
+			try
+			{
+				std::cin >> amount;
+			}
+			catch (std::exception e)
+			{
+				std::cout << "Unidentified amount, try again" << std::endl;
+			}
+			for(int i = 1;i<=amount;i++)
+			studentBody.push_back(randFillStudents(i));
+			break;
+			case 5:
 				isWork = false;
 				return;//end work
 			default:
@@ -151,4 +165,25 @@ void printWithMed(student stud)//DONE
 		std::cout << ", Median: " << std::setprecision(2) << stud.marks[stud.marks.size()/2];
 	}
 	std::cout << ", Final Mark: " << stud.finalMark << std::endl;
+}
+
+student randFillStudents(int studPosition)
+{
+	student temp;
+	std::vector<int> tempArr;
+
+	std::string name = "Vardenis";
+	std::string surnname = "Pavardenis";
+
+	for(int i = 0;i> rand() % 10 + 1;i++)
+	{
+		tempArr.push_back(rand() % 10 + 1);
+	}
+
+	temp.studName = name+std::to_string(studPosition);
+	temp.studSurname = surnname + std::to_string(studPosition);
+	temp.finalMark = rand() % 10 + 1;
+	temp.marks = tempArr;
+
+	return temp;
 }
