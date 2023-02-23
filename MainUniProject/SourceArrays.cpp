@@ -126,9 +126,12 @@ void printWithAvgArr(int place)//DONE
 	double ammo = 0;
 	for (const int& mark : marks[place])
 	{
-		std::cout << "[" << mark << "]";
-		temp += mark;
-		ammo++;
+		if (mark > 0 && mark < 11)
+		{
+			std::cout << "[" << mark << "]";
+			ammo++;
+			temp += mark;
+		}
 	}
 	std::cout << ", Average: " << std::setprecision(2) << temp / ammo;
 	std::cout << ", Final Mark: " << finalMark[place] << std::endl;
@@ -140,8 +143,12 @@ void printWithMedArr(int place)//TODO
 	int ammo = 0;
 	for (const int& mark : marks[place])
 	{
-		std::cout << "[" << mark << "]";
-		ammo++;
+		if(mark>0&&mark<11)
+		{
+			std::cout << "[" << mark << "]";
+			ammo++;
+		}
+			
 	}
 	if (ammo % 2 == 0)//even
 	{
