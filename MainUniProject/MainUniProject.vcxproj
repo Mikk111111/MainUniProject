@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="SourceArrays.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyHeader.h" />
