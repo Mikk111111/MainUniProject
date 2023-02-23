@@ -12,7 +12,7 @@ void printWithAvgArr(int place);
 void addStudentArr(int place);
 void randFillStudentsArr(int place);
 
-void menuArr()
+void menuArr()//DONE
 {
 	int command;
 	bool isWork = true;
@@ -137,7 +137,7 @@ void printWithAvgArr(int place)//DONE
 	std::cout << ", Final Mark: " << finalMark[place] << std::endl;
 }
 
-void printWithMedArr(int place)//TODO
+void printWithMedArr(int place)//DONE
 {
 	std::cout << "Student " << studName[place] << " " << studSurname[place] << " Marks: ";
 	int ammo = 0;
@@ -158,7 +158,7 @@ void printWithMedArr(int place)//TODO
 	else//odd
 	{
 		std::sort(std::begin(marks[place]), std::end(marks[place]));
-		std::cout << ", Median: " << std::setprecision(2) << marks[place][ammo / 2];
+		std::cout << ", Median: " << marks[place][ammo / 2];
 	}
 	std::cout << ", Final Mark: " << finalMark[place] << std::endl;
 }

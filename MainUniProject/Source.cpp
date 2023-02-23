@@ -149,7 +149,7 @@
 //	else//odd
 //	{
 //		std::sort(stud.marks.begin(), stud.marks.end());
-//		std::cout << ", Median: " << std::setprecision(2) << stud.marks[stud.marks.size()/2];
+//		std::cout << ", Median: " << stud.marks[stud.marks.size()/2];
 //	}
 //	std::cout << ", Final Mark: " << stud.finalMark << std::endl;
 //}
