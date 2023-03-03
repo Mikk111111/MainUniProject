@@ -14,9 +14,12 @@ void menu(std::vector<student> studentBody) //TODO
 
 	while (true)
 	{
-		std::cout << "1. Print Student List and Marks with Median" << std::endl;
-		std::cout << "2. Print Student List and Marks with Average" << std::endl;
-		std::cout << "3. Print Student List only with Average and Median" << std::endl;
+		if(!studentBody.empty())
+		{
+			std::cout << "1. Print Student List and Marks with Median" << std::endl;
+			std::cout << "2. Print Student List and Marks with Average" << std::endl;
+			std::cout << "3. Print Student List only with Average and Median" << std::endl;
+		}
 		std::cout << "4. Add Student" << std::endl;
 		std::cout << "5. Create random students" << std::endl;
 		std::cout << "6. Read from file" << std::endl;
