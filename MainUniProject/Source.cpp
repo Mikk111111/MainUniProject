@@ -7,7 +7,7 @@ int main()
 	return 0;
 }
 
-void menu(std::vector<student> studentBody) //TODO
+void menu(std::vector<student> studentBody)
 {
 	std::string commandS;
 	int command = 0;
@@ -90,7 +90,7 @@ void menu(std::vector<student> studentBody) //TODO
 	}
 }
 
-student addStudent() //TODO
+student addStudent()
 {
 	student temp;
 
