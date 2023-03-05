@@ -7,7 +7,6 @@ void menuArr()//DONE
 {
 	int command;
 	bool isWork = true;
-	int temp;
 	while (isWork)
 	{
 		std::cout << "Array part only" << std::endl;
@@ -34,11 +33,12 @@ void menuArr()//DONE
 			addStudentArr(students,studentAmount);
 			break;
 		case 4:
-			int amount;
+			int studentsToAdd;
+			int temp;
 			std::cout << "Generate how many?:";
-			std::cin >> amount;
-			temp = studentAmount+amount;
-			studentAmount += amount;
+			std::cin >> studentsToAdd;
+			temp = studentAmount+studentsToAdd;
+			studentAmount += studentsToAdd;
 			for (studentAmount; studentAmount < temp; studentAmount++)
 			{
 				delete [] students;
