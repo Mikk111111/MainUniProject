@@ -32,7 +32,7 @@ void menuArr()//DONE
 				resizedStudets[i]=students[i];
 			}
 			students = new student[sizeof(students)];
-			addStudentArr(students,studentAmount);
+			addStudentArr(students,sizeOf(students));
 			break;
 		case 4:
 			int studentsToAdd;
