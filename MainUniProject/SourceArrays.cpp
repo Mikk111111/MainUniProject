@@ -18,17 +18,16 @@ void menuArr()//DONE
 		switch (command)
 		{
 		case 1://print med
-			for (int i = 0; i < studentAmount; i++)
+			for (int i = 0; i < sizeof(students); i++)
 				printWithMedArr(students,i);
 			break;
 		case 2://print avg
-			for (int i = 0; i < studentAmount; i++)
+			for (int i = 0; i < sizeof(students); i++)
 				printWithAvgArr(students,i);
 			break;
 		case 3://add stud
-			studentAmount++;
 			delete [] students;
-			students = new student[studentAmount];
+			students = new student[sizeof(students)];
 			addStudentArr(students,studentAmount);
 			break;
 		case 4:
@@ -36,11 +35,11 @@ void menuArr()//DONE
 			int temp;
 			std::cout << "Generate how many?:";
 			std::cin >> studentsToAdd;
-			for (studentAmount; studentAmount < temp; studentAmount++)
+			for (sizeof(students); sizeof(students) < temp; sizeof(students)++)
 			{
 				delete [] students;
-				students = new student[studentAmount];
-				randFillStudentsArr(students,studentAmount);
+				students = new student[sizeof(students)];
+				randFillStudentsArr(students,sizeof(students));
 			}
 			break;
 		case 5:
