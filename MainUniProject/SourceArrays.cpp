@@ -26,14 +26,14 @@ void menuArr()//DONE
 				printWithAvgArr(students,i);
 			break;
 		case 3://add stud
-			resizedStudents = new students[sizeOf(students)+1];
+			student resizedStudents = new student[sizeOf(students)+1];
 			for(int i=0;i<sizeOf(students);i++)
 			{
 				resizedStudents[i]=students[i];
 			}
+			addStudentArr(resizedStudents,sizeOf(resizedStudents));
 			delete [] students;
 			students = new student[sizeof(resizeStudents)];
-			addStudentArr(students,sizeOf(students));
 			break;
 		case 4:
 			
