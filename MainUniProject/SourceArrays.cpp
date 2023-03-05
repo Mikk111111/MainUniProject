@@ -19,24 +19,24 @@ void menuArr()//DONE
 		{
 		case 1://print med
 			for (int i = 0; i < sizeof(students); i++)
-				printWithMedArr(students,i);
+				printWithMedArr(students, i);
 			break;
 		case 2://print avg
 			for (int i = 0; i < sizeof(students); i++)
-				printWithAvgArr(students,i);
+				printWithAvgArr(students, i);
 			break;
 		case 3://add stud
-			student resizedStudents = new student[sizeOf(students)+1];
-			for(int i=0;i<sizeOf(students);i++)
+			student* resizedStudents = new student[sizeof(students) + 1];
+			for (int i = 0; i < sizeof(students); i++)
 			{
-				resizedStudents[i]=students[i];
+				resizedStudents[i] = students[i];
 			}
-			addStudentArr(resizedStudents,sizeOf(resizedStudents));
-			delete [] students;
+			addStudentArr(resizedStudents, sizeof(resizedStudents-1));
+			delete[] students;
 			students = resizedStudents;
 			break;
 		case 4:
-			
+
 			break;
 		case 5:
 			isWork = false;
@@ -55,7 +55,7 @@ int main()//DONE
 	return 0;
 }
 
-void addStudentArr(student* &students, int place)//DONE
+void addStudentArr(student*& students, int place)//DONE
 {
 	std::cout << "Enter Student Name: ";
 	std::cin >> students[place].studName;
@@ -73,7 +73,7 @@ void addStudentArr(student* &students, int place)//DONE
 	}
 }
 
-void printWithAvgArr(student* &students,int place)//DONE
+void printWithAvgArr(student*& students, int place)//DONE
 {
 	std::cout << "Student " << std::setw(15) << students[place].studName << " " << std::setw(15) << students[place].studSurname << " Marks: ";
 	double sum = 0;
@@ -86,20 +86,20 @@ void printWithAvgArr(student* &students,int place)//DONE
 	std::cout << ", Final Mark: " << students[place].finalMark << std::endl;
 }
 
-void printWithMedArr(student* &students, int place)//DONE
+void printWithMedArr(student*& students, int place)//DONE
 {
 	std::cout << "Student " << std::setw(15) << students[place].studName << " " << std::setw(15) << students[place].studSurname << " Marks: ";
 	for (const int& mark : students[place].marks)
 		std::cout << "[" << mark << "]";
 	std::sort(std::begin(students[place].marks), std::end(students[place].marks));
 	if (students[place].marks.size() % 2 == 0)//even
-		std::cout << ", Median: " << std::setprecision(3) << (students[place].marks[students[place] .marks.size()/ 2] + students[place].marks[students[place].marks.size() / 2 - 1]) / 2;
+		std::cout << ", Median: " << std::setprecision(3) << (students[place].marks[students[place].marks.size() / 2] + students[place].marks[students[place].marks.size() / 2 - 1]) / 2;
 	else//odd
 		std::cout << ", Median: " << std::setprecision(3) << students[place].marks[students[place].marks.size() / 2];
 	std::cout << ", Final Mark: " << students[place].finalMark << std::endl;
 }
 
-void randFillStudentsArr(student* &students,int place)//DONE
+void randFillStudentsArr(student*& students, int place)//DONE
 {
 	for (int i = 0; i < dist1_10(rng); i++)
 		students[place].marks[i] = dist0_10(rng);
