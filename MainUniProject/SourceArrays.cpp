@@ -29,9 +29,10 @@ void menuArr()//DONE
 			resizedStudents = new students[sizeOf(students)+1];
 			for(int i=0;i<sizeOf(students);i++)
 			{
-				resizedStudets[i]=students[i];
+				resizedStudents[i]=students[i];
 			}
-			students = new student[sizeof(students)];
+			delete [] students;
+			students = new student[sizeof(resizeStudents)];
 			addStudentArr(students,sizeOf(students));
 			break;
 		case 4:
