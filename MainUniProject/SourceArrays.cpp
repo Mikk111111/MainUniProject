@@ -34,7 +34,6 @@ void menuArr()//DONE
 			addStudentArr(resizedStudents,sizeOf(resizedStudents));
 			delete [] students;
 			students = resizedStudents;
-			delete [] resizedStudents;
 			break;
 		case 4:
 			
