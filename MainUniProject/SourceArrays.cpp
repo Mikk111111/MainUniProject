@@ -35,16 +35,7 @@ void menuArr()//DONE
 			addStudentArr(students,sizeOf(students));
 			break;
 		case 4:
-			int studentsToAdd;
-			int temp;
-			std::cout << "Generate how many?:";
-			std::cin >> studentsToAdd;
-			for (sizeof(students); sizeof(students) < temp; sizeof(students)++)
-			{
-				delete [] students;
-				students = new student[sizeof(students)];
-				randFillStudentsArr(students,sizeof(students));
-			}
+			
 			break;
 		case 5:
 			isWork = false;
