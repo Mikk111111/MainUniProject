@@ -68,6 +68,7 @@ void addStudentArr(student*& students, int place)//DONE
 	int amount;
 	std::cout << std::endl << "Enter Student Mark Amount: ";
 	std::cin >> amount;
+	students[place].marks = new int[amount];
 	for (int i = 0; i < amount; i++)
 	{
 		std::cout << "Enter Mark:";
