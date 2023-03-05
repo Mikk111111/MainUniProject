@@ -33,7 +33,8 @@ void menuArr()//DONE
 			}
 			addStudentArr(resizedStudents,sizeOf(resizedStudents));
 			delete [] students;
-			students = new student[sizeof(resizeStudents)];
+			students = resizedStudents;
+			delete [] resizedStudents;
 			break;
 		case 4:
 			
