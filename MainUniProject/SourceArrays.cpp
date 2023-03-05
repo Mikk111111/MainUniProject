@@ -1,7 +1,6 @@
 ﻿#include "MyHeader.h"
 
-int studentAmount = 0;
-student* students = new student[studentAmount];
+student* students = new student[0];
 
 void menuArr()//DONE
 {
@@ -37,8 +36,6 @@ void menuArr()//DONE
 			int temp;
 			std::cout << "Generate how many?:";
 			std::cin >> studentsToAdd;
-			temp = studentAmount+studentsToAdd;
-			studentAmount += studentsToAdd;
 			for (studentAmount; studentAmount < temp; studentAmount++)
 			{
 				delete [] students;
