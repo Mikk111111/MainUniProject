@@ -1,4 +1,4 @@
-﻿#include "MyHeader.h"
+#include "MyHeader.h"
 
 student* students = new student[0];
 
@@ -26,14 +26,16 @@ void menuArr()//DONE
 				printWithAvgArr(students, i);
 			break;
 		case 3://add stud
+		{
 			student* resizedStudents = new student[sizeof(students) + 1];
 			for (int i = 0; i < sizeof(students); i++)
 			{
 				resizedStudents[i] = students[i];
 			}
-			addStudentArr(resizedStudents, sizeof(resizedStudents-1));
+			addStudentArr(resizedStudents, sizeof(resizedStudents - 1));
 			delete[] students;
 			students = resizedStudents;
+		}
 			break;
 		case 4:
 
