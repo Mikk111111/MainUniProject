@@ -1,4 +1,4 @@
-﻿#include "MyHeader.h"
+#include "MyHeader.h"
 
 struct student//DONE
 {
