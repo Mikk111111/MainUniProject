@@ -120,7 +120,7 @@ void printWithAvgArr(student* students, int place)//DONE
 void printWithMedArr(student* students, int place)//DONE
 {
 	std::cout << "Student " << std::setw(15) << students[place].studName << " " << std::setw(15) << students[place].studSurname << " Marks: ";
-	students[place].marks = new int[students[place].marksAmount];
+	//students[place].marks = new int[students[place].marksAmount];
 	std::sort(students[place].marks,students[place].marks+students[place].marksAmount);
 	for (int i = 0; i < students[place].marksAmount; i++)
 		std::cout << "[" << students[place].marks[i] << "]";
@@ -129,7 +129,7 @@ void printWithMedArr(student* students, int place)//DONE
 		std::cout << ", Median: " << std::setprecision(3) << (students[place].marks[students[place].marksAmount / 2] + students[place].marks[students[place].marksAmount / 2 - 1]) / 2;
 	else//odd
 		std::cout << ", Median: " << std::setprecision(3) << students[place].marks[students[place].marksAmount / 2];
-	std::cout << ", Final Mark: " << students[place].finalMark << std::endl;5
+	std::cout << ", Final Mark: " << students[place].finalMark << std::endl;
 }
 
 void randFillStudentsArr(student*& students, int place)//DONE
