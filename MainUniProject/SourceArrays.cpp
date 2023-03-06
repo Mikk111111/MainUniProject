@@ -113,32 +113,23 @@ void printWithAvgArr(student* students, int place)//DONE
 		std::cout << "[" << students[place].marks[i] << "]";
 		sum += students[place].marks[i];
 	}
-	std::cout << ", Average: " << std::setprecision(3) << sum / currentArraySize;
+	std::cout << ", Average: " << std::setprecision(3) << sum / students[place].marksAmount;
 	std::cout << ", Final Mark: " << students[place].finalMark << std::endl;
 }
 
 void printWithMedArr(student* students, int place)//DONE
 {
 	std::cout << "Student " << std::setw(15) << students[place].studName << " " << std::setw(15) << students[place].studSurname << " Marks: ";
+	students[place].marks = new int[students[place].marksAmount];
+	std::sort(students[place].marks,students[place].marks+students[place].marksAmount);
 	for (int i = 0; i < students[place].marksAmount; i++)
 		std::cout << "[" << students[place].marks[i] << "]";
-	students[place].marks = new int[students[place].marksAmount];
-	//for (int i = 0; i < students[place].marksAmount;i++)
-	//	for(int j = 1;j < students[place].marksAmount;j++)
-	//	{
-	//		int temp;
-	//		if(students[place].marks[i]>students[place].marks[j])
-	//		{
-	//			temp = students[place].marks[j];//temp = 2
-	//			students[place].marks[j] = students[place].marks[i];//2 = 1
-	//			students[place].marks[i] = temp;//1 = temp
-	//		}
-	//	}
+	
 	if (students[place].marksAmount % 2 == 0)//even
 		std::cout << ", Median: " << std::setprecision(3) << (students[place].marks[students[place].marksAmount / 2] + students[place].marks[students[place].marksAmount / 2 - 1]) / 2;
 	else//odd
 		std::cout << ", Median: " << std::setprecision(3) << students[place].marks[students[place].marksAmount / 2];
-	std::cout << ", Final Mark: " << students[place].finalMark << std::endl;
+	std::cout << ", Final Mark: " << students[place].finalMark << std::endl;5
 }
 
 void randFillStudentsArr(student*& students, int place)//DONE
