@@ -19,12 +19,14 @@ void menu(std::vector<student> studentBody) //TODO
 			std::cout << "1. Print Student List and Marks with Median" << std::endl;
 			std::cout << "2. Print Student List and Marks with Average" << std::endl;
 			std::cout << "3. Print Student List only with Average and Median" << std::endl;
+			std::cout << "4. Sort Students by Grades to Files" << std::endl;
 		}
-		std::cout << "4. Add Student" << std::endl;
-		std::cout << "5. Create random students" << std::endl;
-		std::cout << "6. Read from file" << std::endl;
-		std::cout << "7. Write to file" << std::endl;
-		std::cout << "8. End Work" << std::endl;
+		std::cout << "5. Add Student" << std::endl;
+		std::cout << "6. Create random students" << std::endl;
+		std::cout << "7. Read from file" << std::endl;
+		std::cout << "8. Write to file" << std::endl;
+		std::cout << "9. Generate requested files" << std::endl;
+		std::cout << "10. End Work" << std::endl;
 		std::cout << "Enter Command:";
 		std::cin >> commandS;
 		try
@@ -50,10 +52,25 @@ void menu(std::vector<student> studentBody) //TODO
 			for (const student& std : studentBody)
 				printBoth(std);
 			break;
-		case 4: //add stud
+		case 4://create dumb and smart files
+			std::vector<student> tempBodySmart;
+			std::vector<student> tempBodyDumb;
+			for(const student& std : studentBody)
+			{
+				if (std.finalMark >= 5)
+					tempBodySmart.push_back(std);
+				else
+					tempBodyDumb.push_back(std);
+			}
+			fillText("SmartStudents.txt", tempBodySmart);
+			fillText("DumbStudents.txt", tempBodyDumb);
+			tempBodyDumb.clear();
+			tempBodySmart.clear();
+			break;
+		case 5: //add stud
 			studentBody.push_back(addStudent());
 			break;
-		case 5: //generate stud
+		case 6: //generate stud
 			{
 				std::string amountS;
 				int amount;
@@ -72,7 +89,7 @@ void menu(std::vector<student> studentBody) //TODO
 					studentBody.push_back(randFillStudents(i + 1));
 			}
 			break;
-		case 6:
+		case 7:
 			{
 				std::string readFileName;
 				std::cout << "Enter File Name:";
@@ -80,11 +97,46 @@ void menu(std::vector<student> studentBody) //TODO
 				bufferRead(readFileName, studentBody);
 			}
 			break;
-		case 7:
+		case 8:
 			fillText("test.txt", studentBody);
 			std::cout << "Done" << std::endl;
 			break;
-		case 8:
+		case 9://create files
+		{
+			std::vector<student> tempBody;
+
+			for (int i = 0; i < 1000; i++)
+				tempBody.push_back(randFillStudents(i));
+			fillText("Students1000.txt", tempBody);
+			std::cout << "File1000 Done" << std::endl;
+			tempBody.clear();
+
+			for (int i = 0; i < 10000; i++)
+				tempBody.push_back(randFillStudents(i));
+			fillText("Students10000.txt", tempBody);
+			std::cout << "File10000 Done" << std::endl;
+			tempBody.clear();
+
+			for (int i = 0; i < 100000; i++)
+				tempBody.push_back(randFillStudents(i));
+			fillText("Students100000.txt", tempBody);
+			std::cout << "File100000 Done" << std::endl;
+			tempBody.clear();
+
+			for (int i = 0; i < 1000000; i++)
+				tempBody.push_back(randFillStudents(i));
+			fillText("Students1000000.txt", tempBody);
+			std::cout << "File1000000 Done" << std::endl;
+			tempBody.clear();
+
+			for (int i = 0; i < 10000000; i++)
+				tempBody.push_back(randFillStudents(i));
+			fillText("Students10000000.txt", tempBody);
+			std::cout << "File10000000 Done" << std::endl;
+			tempBody.clear();
+		}
+			break;
+		case 10:
 			return; //end work
 		default:
 			std::cout << "-----------------------------------------------" << std::endl;
@@ -326,8 +378,6 @@ void fillText(std::string writeName, std::vector<student> studentBody)
 			out << ", Median: " << std::setw(5) << temp.marks[temp.marks.size() / 2] << "| ";
 		}
 		out << std::endl;
-			
 	}
-
 	out.close();
 }
