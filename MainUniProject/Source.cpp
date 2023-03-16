@@ -48,12 +48,14 @@ void menu(std::vector<student> studentBody) //TODO
 			for (const student& std : studentBody)
 				printWithAvg(std);
 			break;
-		case 3:
+		case 3://print both med and avg
 			for (const student& std : studentBody)
 				printBoth(std);
 			break;
 		case 4://create dumb and smart files
 		{
+			auto start = std::chrono::high_resolution_clock::now();
+
 			std::vector<student> tempBodySmart;
 			std::vector<student> tempBodyDumb;
 			for (const student& std : studentBody)
@@ -63,10 +65,16 @@ void menu(std::vector<student> studentBody) //TODO
 				else
 					tempBodyDumb.push_back(std);
 			}
+			std::chrono::duration<double> diff = std::chrono::high_resolution_clock::now() - start;
+			std::cout << "Sort Time: " << diff.count() << " s" << std::endl;
+			start = std::chrono::high_resolution_clock::now();
+
 			fillText("SmartStudents.txt", tempBodySmart);
 			fillText("DumbStudents.txt", tempBodyDumb);
 			tempBodyDumb.clear();
 			tempBodySmart.clear();
+			diff = std::chrono::high_resolution_clock::now() - start;
+			std::cout << "Text File fill Time: " << diff.count() << " s" << std::endl;
 		}
 			break;
 		case 5: //add stud
@@ -91,61 +99,80 @@ void menu(std::vector<student> studentBody) //TODO
 					studentBody.push_back(randFillStudents(i + 1));
 			}
 			break;
-		case 7:
+		case 7://File reading to buffer
 			{
+				auto start = std::chrono::high_resolution_clock::now();
+
 				std::string readFileName;
 				std::cout << "Enter File Name:";
 				std::cin >> readFileName;
 				bufferRead(readFileName, studentBody);
+
+				std::chrono::duration<double> diff = std::chrono::high_resolution_clock::now() - start;
+				std::cout << "Time to load file to buffer: " << diff.count() << " s" << std::endl;
 			}
 			break;
-		case 8:
-			fillText("test.txt", studentBody);
-			std::cout << "Done" << std::endl;
+		case 8://Write to file
+			{
+				auto start = std::chrono::high_resolution_clock::now();
+				fillText("test.txt", studentBody);
+				std::chrono::duration<double> diff = std::chrono::high_resolution_clock::now() - start;
+				std::cout << "Time to fill file: " << diff.count() << " s" << std::endl;
+			}
 			break;
 		case 9://create files
 		{
+			auto start = std::chrono::high_resolution_clock::now();
+			auto st = start;
 			std::vector<student> tempBody;
 
 			tempBody.reserve(1000);
 			for (int i = 0; i < 1000; i++)
 				tempBody.push_back(randFillStudents(i));
 			fillText("Students1000.txt", tempBody);
-			std::cout << "File1000 Done" << std::endl;
+			std::chrono::duration<double> diff = std::chrono::high_resolution_clock::now() - start;
+			std::cout << "File1000 Done in: " << diff.count() << " s" << std::endl;
 			tempBody.clear();
 
+			start = std::chrono::high_resolution_clock::now();
 			tempBody.reserve(10000);
 			for (int i = 0; i < 10000; i++)
 				tempBody.push_back(randFillStudents(i));
 			fillText("Students10000.txt", tempBody);
-			std::cout << "File10000 Done" << std::endl;
+			diff = std::chrono::high_resolution_clock::now() - start;
+			std::cout << "File10000 Done in: " << diff.count() << " s" << std::endl;
 			tempBody.clear();
 
+			start = std::chrono::high_resolution_clock::now();
 			tempBody.reserve(100000);
 			for (int i = 0; i < 100000; i++)
 				tempBody.push_back(randFillStudents(i));
 			fillText("Students100000.txt", tempBody);
-			std::cout << "File100000 Done" << std::endl;
+			diff = std::chrono::high_resolution_clock::now() - start;
+			std::cout << "File100000 Done in: " << diff.count() << " s" << std::endl;
 			tempBody.clear();
 
+			start = std::chrono::high_resolution_clock::now();
 			tempBody.reserve(1000000);
 			for (int i = 0; i < 1000000; i++)
 				tempBody.push_back(randFillStudents(i));
 			fillText("Students1000000.txt", tempBody);
-			std::cout << "File1000000 Done" << std::endl;
+			diff = std::chrono::high_resolution_clock::now() - start;
+			std::cout << "File1000000 Done in: " << diff.count() << " s" << std::endl;
 			tempBody.clear();
-			std::cout << "Continue?(y)";
-			std::string answer;
-			std::cin >> answer;
-			if (answer=="y")
-			{
+
+			start = std::chrono::high_resolution_clock::now();
 				tempBody.reserve(10000000);
 				for (int i = 0; i < 10000000; i++)
 					tempBody.push_back(randFillStudents(i));
 				fillText("Students10000000.txt", tempBody);
-				std::cout << "File10000000 Done" << std::endl;
+				diff = std::chrono::high_resolution_clock::now() - start;
+				std::cout << "File10000000 Done in: " << diff.count() << " s" << std::endl;
 				tempBody.clear();
-			}
+
+
+				diff = std::chrono::high_resolution_clock::now() - st;
+				std::cout << "File creation Done in: " << diff.count() << " s Total" << std::endl;
 		}
 			break;
 		case 10:
