@@ -53,9 +53,10 @@ void menu(std::vector<student> studentBody) //TODO
 				printBoth(std);
 			break;
 		case 4://create dumb and smart files
+		{
 			std::vector<student> tempBodySmart;
 			std::vector<student> tempBodyDumb;
-			for(const student& std : studentBody)
+			for (const student& std : studentBody)
 			{
 				if (std.finalMark >= 5)
 					tempBodySmart.push_back(std);
@@ -66,6 +67,7 @@ void menu(std::vector<student> studentBody) //TODO
 			fillText("DumbStudents.txt", tempBodyDumb);
 			tempBodyDumb.clear();
 			tempBodySmart.clear();
+		}
 			break;
 		case 5: //add stud
 			studentBody.push_back(addStudent());
@@ -105,35 +107,45 @@ void menu(std::vector<student> studentBody) //TODO
 		{
 			std::vector<student> tempBody;
 
+			tempBody.reserve(1000);
 			for (int i = 0; i < 1000; i++)
 				tempBody.push_back(randFillStudents(i));
 			fillText("Students1000.txt", tempBody);
 			std::cout << "File1000 Done" << std::endl;
 			tempBody.clear();
 
+			tempBody.reserve(10000);
 			for (int i = 0; i < 10000; i++)
 				tempBody.push_back(randFillStudents(i));
 			fillText("Students10000.txt", tempBody);
 			std::cout << "File10000 Done" << std::endl;
 			tempBody.clear();
 
+			tempBody.reserve(100000);
 			for (int i = 0; i < 100000; i++)
 				tempBody.push_back(randFillStudents(i));
 			fillText("Students100000.txt", tempBody);
 			std::cout << "File100000 Done" << std::endl;
 			tempBody.clear();
 
+			tempBody.reserve(1000000);
 			for (int i = 0; i < 1000000; i++)
 				tempBody.push_back(randFillStudents(i));
 			fillText("Students1000000.txt", tempBody);
 			std::cout << "File1000000 Done" << std::endl;
 			tempBody.clear();
-
-			for (int i = 0; i < 10000000; i++)
-				tempBody.push_back(randFillStudents(i));
-			fillText("Students10000000.txt", tempBody);
-			std::cout << "File10000000 Done" << std::endl;
-			tempBody.clear();
+			std::cout << "Continue?(y)";
+			std::string answer;
+			std::cin >> answer;
+			if (answer=="y")
+			{
+				tempBody.reserve(10000000);
+				for (int i = 0; i < 10000000; i++)
+					tempBody.push_back(randFillStudents(i));
+				fillText("Students10000000.txt", tempBody);
+				std::cout << "File10000000 Done" << std::endl;
+				tempBody.clear();
+			}
 		}
 			break;
 		case 10:
