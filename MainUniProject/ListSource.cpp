@@ -264,7 +264,7 @@ void printBothList(studentList stud)
 	std::cout << "studentList| " << std::setw(22) << stud.studName << "|" << std::setw(22) << stud.studSurname <<
 		"|";
 	double temp = 0;
-	for (const int& mark : stud.marks) temp += mark;
+	for (auto mark : stud.marks) temp += mark;
 	std::cout << ", Average: " << std::setprecision(3) << std::setw(5) << temp / stud.marks.size() << "| ";
 	if (stud.marks.size() % 2 == 0) //even
 	{
@@ -292,7 +292,7 @@ void printWithAvgList(studentList stud) //DONE
 	std::cout << "studentList " << std::setw(22) << stud.studName << "|" << std::setw(22) << stud.studSurname <<
 		"| Marks: ";
 	double temp = 0;
-	for (const int& mark : stud.marks)
+	for (auto mark : stud.marks)
 	{
 		std::cout << "[" << std::setw(2) << mark << "]";
 		temp += mark;
@@ -305,7 +305,7 @@ void printWithMedList(studentList stud) //DONE
 {
 	std::cout << "studentList " << std::setw(22) << stud.studName << "|" << std::setw(22) << stud.studSurname <<
 		"| Marks: ";
-	for (const int& mark : stud.marks)
+	for (auto mark : stud.marks)
 	{
 		std::cout << "[" << std::setw(2) << mark << "]";
 	}

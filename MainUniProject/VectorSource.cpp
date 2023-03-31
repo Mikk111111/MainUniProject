@@ -71,9 +71,9 @@ void menuVector(std::vector<studentVector> studentBody) //TODO
 					tempBodyDumb.push_back(std);
 			}
 			std::chrono::duration<double> diff = std::chrono::high_resolution_clock::now() - start;
-			std::cout << "Sort Time: " << std::fixed << diff.count() << " s" << std::endl;
-			start = std::chrono::high_resolution_clock::now();
+			std::cout << "Segregation sort Time: " << std::fixed << diff.count() << " s" << std::endl;
 
+			start = std::chrono::high_resolution_clock::now();
 			fillTextVector("SmartStudents.txt", tempBodySmart);
 			fillTextVector("DumbStudents.txt", tempBodyDumb);
 			tempBodyDumb.clear();
@@ -402,7 +402,6 @@ void fillTextVector(std::string writeName, std::vector<studentVector> studentBod
 	std::ofstream out(writeName);
 	std::stringstream z;
 	std::string outText;
-
 	auto start = std::chrono::high_resolution_clock::now();
 	std::sort(studentBody.begin(), studentBody.end(), &studentSorterVector);//Important sort
 	std::chrono::duration<double> diff = std::chrono::high_resolution_clock::now() - start;

@@ -71,7 +71,7 @@ void menuDeque(std::deque<studentDeque> studentBody) //TODO
 					tempBodyDumb.push_back(std);
 			}
 			std::chrono::duration<double> diff = std::chrono::high_resolution_clock::now() - start;
-			std::cout << "Sort Time: " << std::fixed << diff.count() << " s" << std::endl;
+			std::cout << "Segregation sort Time: " << std::fixed << diff.count() << " s" << std::endl;
 			start = std::chrono::high_resolution_clock::now();
 
 			fillTextDeque("SmartStudents.txt", tempBodySmart);
